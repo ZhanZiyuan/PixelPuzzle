@@ -36,53 +36,46 @@ def decode_base64(encoded_text: str,
 def shuffle_pixels(origin_image: str,
                    shuffled_image: str,
                    index_file: Union[str, Path] = Path(__file__).with_suffix(".npy"),
-                   dimension: int = 0,
                    seed: Union[int, None] = None) -> None:
     """
-    Shuffle the arrangement of pixels in a specified dimension.
+    Shuffle the arrangement of pixels in two dimensions.
     """
     rng = np.random.default_rng(seed)
 
     pixel_array = np.array(
         Image.open(origin_image)
     )
-    indices_shuffled = rng.permutation(
-        pixel_array.shape[dimension]
+    indices_shuffled_x = rng.permutation(pixel_array.shape[0])
+    indices_shuffled_y = rng.permutation(pixel_array.shape[1])
+
+    np.savez(
+        index_file,
+        indices_shuffled_x=indices_shuffled_x,
+        indices_shuffled_y=indices_shuffled_y
     )
 
-    np.save(index_file, indices_shuffled)
-
     shuffled_output = Image.fromarray(
-        np.take(
-            pixel_array,
-            indices_shuffled,
-            axis=dimension
-        )
+        pixel_array[indices_shuffled_x[:, np.newaxis], indices_shuffled_y, :]
     )
     shuffled_output.save(shuffled_image)
 
 
 def recover_pixels(shuffled_image: str,
                    recovered_image: str,
-                   index_file: Union[str, Path] = Path(__file__).with_suffix(".npy"),
-                   dimension: int = 0) -> None:
+                   index_file: Union[str, Path] = Path(__file__).with_suffix(".npy")) -> None:
     """
-    Recover the arrangement of pixels in a specified dimension.
+    Recover the arrangement of pixels in two dimensions.
     """
     pixel_array = np.array(
         Image.open(shuffled_image)
     )
 
-    indices_recovered = np.argsort(
-        np.load(index_file)
-    )
+    indices_data = np.load(index_file)
+    indices_recovered_x = np.argsort(indices_data['indices_shuffled_x'])
+    indices_recovered_y = np.argsort(indices_data['indices_shuffled_y'])
 
     recovered_output = Image.fromarray(
-        np.take(
-            pixel_array,
-            indices_recovered,
-            axis=dimension
-        )
+        pixel_array[indices_recovered_x[:, np.newaxis], indices_recovered_y, :]
     )
     recovered_output.save(recovered_image)
 
@@ -135,9 +128,6 @@ if __name__ == "__main__":
             path_of_output_array = input(
                 "Please input the path of the output array.\n"
             )
-            dimension_to_shuffle = input(
-                "Please input the dimension to shuffle.\n"
-            )
             random_number_seed = input(
                 'Please input the selected random number seed.\n'
                 'Type "no" for `None`.\n'
@@ -146,8 +136,7 @@ if __name__ == "__main__":
                 path_of_original_image,
                 path_of_shuffled_image,
                 path_of_output_array,
-                int(dimension_to_shuffle),
-                seed=None if random_number_seed == "no" else int(random_number_seed)
+                None if random_number_seed == "no" else int(random_number_seed)
             )
 
         case "recover":
@@ -160,14 +149,10 @@ if __name__ == "__main__":
             path_of_input_array = input(
                 "Please input the path of the input array.\n"
             )
-            dimension_to_recover = input(
-                "Please input the dimension to recover.\n"
-            )
             recover_pixels(
                 path_of_shuffled_image,
                 path_of_recovered_image,
-                path_of_input_array,
-                int(dimension_to_recover)
+                path_of_input_array
             )
 
         case _:
