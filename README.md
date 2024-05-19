@@ -1,6 +1,7 @@
 # PixelPuzzle
 
-Encode/decode images using Base64 or shuffle/recover the pixels of images.
+Encode/decode images using Base64
+or shuffle/recover the pixels of images.
 
 ## Motivations
 
@@ -41,13 +42,19 @@ in Python.
 
 ## Examples
 
-![The original image](./assets/original.png "original")
+- The original image.
 
-![The shuffled image](./assets/shuffled.png "shuffled")
+    ![The original image](./assets/original.png "original")
 
-The `.npz` file [key.npz](./assets/key.npz) stores the original positions of pixels.
+- The shuffled image.
 
-![The recovered image](./assets/recovered.png "recovered")
+    ![The shuffled image](./assets/shuffled.png "shuffled")
+
+    The `.npz` file [key.npz](./assets/key.npz) stores the original positions of pixels.
+
+- The recovered image.
+
+    ![The recovered image](./assets/recovered.png "recovered")
 
 ## Packaging
 
@@ -83,3 +90,5 @@ Some of the references are as follows:
 - [Nuitka](https://github.com/Nuitka/Nuitka)
 - [Doki Doki Literature Club (DDLC)](https://ddlc.moe/)
 - [图片混淆](https://www.coolapk.com/feed/27933328?shareKey=N2QxMWY3MTExMDc0NjY0OWQwYWE)
+
+The image used is downloaded from [satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
