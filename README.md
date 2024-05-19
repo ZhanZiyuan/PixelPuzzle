@@ -91,4 +91,8 @@ Some of the references are as follows:
 - [Doki Doki Literature Club (DDLC)](https://ddlc.moe/)
 - [图片混淆](https://www.coolapk.com/feed/27933328?shareKey=N2QxMWY3MTExMDc0NjY0OWQwYWE)
 
-The image used is downloaded from [satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
+[The Python Software Foundation](https://www.python.org/psf-landing/)
+owns the copyright of [Python icon](./assets/python.ico).
+
+The image used is downloaded from
+[satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
