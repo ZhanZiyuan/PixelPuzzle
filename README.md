@@ -81,8 +81,9 @@ Deploy web applications using:
 
 ## Copyrights
 
-Contents of this repository may cause some copyright issues.
-Please raise issues to let me know if that happens.
+> [!WARNING]
+> Contents of this repository may cause some copyright issues.
+> Please raise issues to let me know if that happens.
 
 Some of the references are as follows:
 
