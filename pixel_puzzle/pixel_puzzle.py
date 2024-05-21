@@ -35,10 +35,10 @@ def decode_base64(encoded_text: str,
 
 def shuffle_pixels(origin_image: str,
                    shuffled_image: str,
-                   index_file: Union[str, Path] = Path(__file__).with_suffix(".npy"),
-                   seed: Union[int, None] = None) -> None:
+                   seed: Union[int, None] = None,
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npy")) -> None:
     """
-    Shuffle the arrangement of pixels in two dimensions.
+    Shuffle the arrangement of pixels on two dimensions.
     """
     rng = np.random.default_rng(seed)
 
@@ -48,11 +48,12 @@ def shuffle_pixels(origin_image: str,
     indices_shuffled_x = rng.permutation(pixel_array.shape[0])
     indices_shuffled_y = rng.permutation(pixel_array.shape[1])
 
-    np.savez(
-        index_file,
-        indices_shuffled_x=indices_shuffled_x,
-        indices_shuffled_y=indices_shuffled_y
-    )
+    if seed is None and index_file is not None:
+        np.savez(
+            index_file,
+            indices_shuffled_x=indices_shuffled_x,
+            indices_shuffled_y=indices_shuffled_y
+        )
 
     shuffled_output = Image.fromarray(
         pixel_array[indices_shuffled_x[:, np.newaxis], indices_shuffled_y, :]
@@ -62,17 +63,26 @@ def shuffle_pixels(origin_image: str,
 
 def recover_pixels(shuffled_image: str,
                    recovered_image: str,
-                   index_file: Union[str, Path] = Path(__file__).with_suffix(".npy")) -> None:
+                   seed: Union[int, None] = None,
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npy")) -> None:
     """
-    Recover the arrangement of pixels in two dimensions.
+    Recover the arrangement of pixels on two dimensions.
     """
     pixel_array = np.array(
         Image.open(shuffled_image)
     )
 
-    indices_data = np.load(index_file)
-    indices_recovered_x = np.argsort(indices_data['indices_shuffled_x'])
-    indices_recovered_y = np.argsort(indices_data['indices_shuffled_y'])
+    if seed is not None and index_file is None:
+        rng = np.random.default_rng(seed)
+        indices_shuffled_x = rng.permutation(pixel_array.shape[0])
+        indices_shuffled_y = rng.permutation(pixel_array.shape[1])
+    elif seed is None and index_file is not None:
+        indices_data = np.load(index_file)
+        indices_shuffled_x = indices_data["indices_shuffled_x"]
+        indices_shuffled_y = indices_data["indices_shuffled_y"]
+
+    indices_recovered_x = np.argsort(indices_shuffled_x)
+    indices_recovered_y = np.argsort(indices_shuffled_y)
 
     recovered_output = Image.fromarray(
         pixel_array[indices_recovered_x[:, np.newaxis], indices_recovered_y, :]
@@ -125,19 +135,27 @@ if __name__ == "__main__":
             path_of_shuffled_image = input(
                 "Please input the path of the shuffled image.\n"
             )
-            path_of_output_array = input(
-                "Please input the path of the output array.\n"
-            )
             random_number_seed = input(
                 'Please input the selected random number seed.\n'
                 'Type "no" for `None`.\n'
             )
-            shuffle_pixels(
-                path_of_original_image,
-                path_of_shuffled_image,
-                path_of_output_array,
-                None if random_number_seed == "no" else int(random_number_seed)
-            )
+            if random_number_seed == "no":
+                path_of_output_arrays = input(
+                    "Please input the path of the output arrays.\n"
+                )
+                shuffle_pixels(
+                    path_of_original_image,
+                    path_of_shuffled_image,
+                    None,
+                    path_of_output_arrays
+                )
+            else:
+                shuffle_pixels(
+                    path_of_original_image,
+                    path_of_shuffled_image,
+                    int(random_number_seed),
+                    None
+                )
 
         case "recover":
             path_of_shuffled_image = input(
@@ -146,14 +164,27 @@ if __name__ == "__main__":
             path_of_recovered_image = input(
                 "Please input the path of the recovered image.\n"
             )
-            path_of_input_array = input(
-                "Please input the path of the input array.\n"
+            random_number_seed = input(
+                'Please input the selected random number seed.\n'
+                'Type "no" for `None`.\n'
             )
-            recover_pixels(
-                path_of_shuffled_image,
-                path_of_recovered_image,
-                path_of_input_array
-            )
+            if random_number_seed == "no":
+                path_of_input_arrays = input(
+                    "Please input the path of the input arrays.\n"
+                )
+                recover_pixels(
+                    path_of_shuffled_image,
+                    path_of_recovered_image,
+                    None,
+                    path_of_input_arrays
+                )
+            else:
+                recover_pixels(
+                    path_of_shuffled_image,
+                    path_of_recovered_image,
+                    int(random_number_seed),
+                    None
+                )
 
         case _:
             print("Invalid mode selection.\n")
