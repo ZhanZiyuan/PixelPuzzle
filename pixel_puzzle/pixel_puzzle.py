@@ -135,27 +135,36 @@ if __name__ == "__main__":
             path_of_shuffled_image = input(
                 "Please input the path of the shuffled image.\n"
             )
-            random_number_seed = input(
-                'Please input the selected random number seed.\n'
-                'Type "no" for `None`.\n'
-            )
-            if random_number_seed == "no":
-                path_of_output_arrays = input(
-                    "Please input the path of the output arrays.\n"
+            while True:
+                random_number_seed = input(
+                    'Please input the selected random number seed.\n'
+                    'Type "no" for `None`.\n'
                 )
-                shuffle_pixels(
-                    path_of_original_image,
-                    path_of_shuffled_image,
-                    None,
-                    path_of_output_arrays
-                )
-            else:
-                shuffle_pixels(
-                    path_of_original_image,
-                    path_of_shuffled_image,
-                    int(random_number_seed),
-                    None
-                )
+                if random_number_seed == "no":
+                    path_of_output_arrays = input(
+                        "Please input the path of the output arrays.\n"
+                    )
+                    shuffle_pixels(
+                        path_of_original_image,
+                        path_of_shuffled_image,
+                        None,
+                        path_of_output_arrays
+                    )
+                    break
+                try:
+                    int(random_number_seed)
+                    shuffle_pixels(
+                        path_of_original_image,
+                        path_of_shuffled_image,
+                        int(random_number_seed),
+                        None
+                    )
+                    break
+                except ValueError:
+                    print(
+                        "Invalid input. Please try again. "
+                        "Please input a non-negative integer. "
+                    )
 
         case "recover":
             path_of_shuffled_image = input(
@@ -164,30 +173,41 @@ if __name__ == "__main__":
             path_of_recovered_image = input(
                 "Please input the path of the recovered image.\n"
             )
-            random_number_seed = input(
-                'Please input the selected random number seed.\n'
-                'Type "no" for `None`.\n'
-            )
-            if random_number_seed == "no":
-                path_of_input_arrays = input(
-                    "Please input the path of the input arrays.\n"
+            while True:
+                random_number_seed = input(
+                    'Please input the selected random number seed.\n'
+                    'Type "no" for `None`.\n'
                 )
-                recover_pixels(
-                    path_of_shuffled_image,
-                    path_of_recovered_image,
-                    None,
-                    path_of_input_arrays
-                )
-            else:
-                recover_pixels(
-                    path_of_shuffled_image,
-                    path_of_recovered_image,
-                    int(random_number_seed),
-                    None
-                )
+                if random_number_seed == "no":
+                    path_of_input_arrays = input(
+                        "Please input the path of the input arrays.\n"
+                    )
+                    recover_pixels(
+                        path_of_shuffled_image,
+                        path_of_recovered_image,
+                        None,
+                        path_of_input_arrays
+                    )
+                    break
+                try:
+                    int(random_number_seed)
+                    recover_pixels(
+                        path_of_shuffled_image,
+                        path_of_recovered_image,
+                        int(random_number_seed),
+                        None
+                    )
+                    break
+                except ValueError:
+                    print(
+                        "Invalid input. Please try again. "
+                        "Please input a non-negative integer. "
+                    )
 
         case _:
-            print("Invalid mode selection.\n")
+            print(
+                "Invalid mode selection.\n"
+            )
 
     if platform.system() == "Windows":
         os.system("pause")
