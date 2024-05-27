@@ -36,7 +36,7 @@ def decode_base64(encoded_text: str,
 def shuffle_pixels(origin_image: str,
                    shuffled_image: str,
                    seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npy")) -> None:
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz")) -> None:
     """
     Shuffle the arrangement of pixels on two dimensions.
     """
@@ -64,7 +64,7 @@ def shuffle_pixels(origin_image: str,
 def recover_pixels(shuffled_image: str,
                    recovered_image: str,
                    seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npy")) -> None:
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz")) -> None:
     """
     Recover the arrangement of pixels on two dimensions.
     """
