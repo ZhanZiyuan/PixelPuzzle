@@ -79,12 +79,23 @@ Deploy web applications using:
 - [Gradio](https://github.com/gradio-app/gradio)
 - [Streamlit](https://github.com/streamlit/streamlit)
 
+## Similar Projects
+
+Here are some links to other similar projects that I am aware of:
+
+- [PicEncryptApp](https://github.com/goldsudo/PicEncryptApp)
+- [piConfuse](https://github.com/Conyrol/piConfuse)
+- [Jencryption](https://github.com/Jinnrry/Jencryption)
+- [RicEncrypt](https://github.com/NaviHX/ricencrypt)
+
 ## Copyrights
 
 > [!WARNING]
 > Contents of this repository may cause some copyright issues.
 > Please raise issues to let me know if that happens.
 
+PixelPuzzle is a free, open-source software package
+(distributed under the [GPLv3 license](./LICENSE)).
 Some of the references are as follows:
 
 - [CPython](https://github.com/python/cpython)
@@ -94,6 +105,5 @@ Some of the references are as follows:
 
 [The Python Software Foundation](https://www.python.org/psf-landing/)
 owns the copyright of [Python icon](./assets/python.ico).
-
-The image used is downloaded from
+The sample image used is downloaded from
 [satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
