@@ -42,24 +42,24 @@ in Python.
 
 ## Examples
 
-- The original image.
+- The original image:
 
     ![The original image](./assets/original.png "original")
 
-- The shuffled image.
+- The shuffled image:
 
     ![The shuffled image](./assets/shuffled.png "shuffled")
 
     The `.npz` file [key.npz](./assets/key.npz) stores the original positions of pixels.
 
-- The recovered image.
+- The recovered image:
 
     ![The recovered image](./assets/recovered.png "recovered")
 
 ## Packaging
 
 The binaries are created with
-[Nuitka](https://github.com/Nuitka/Nuitka).
+[Nuitka](https://github.com/Nuitka/Nuitka):
 
 ```bash
 # Show Nuitka version
