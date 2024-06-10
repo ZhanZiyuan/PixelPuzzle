@@ -36,10 +36,17 @@ def decode_base64(encoded_text: str,
 def shuffle_pixels(origin_image: str,
                    shuffled_image: str,
                    seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz")) -> None:
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz"),
+                   image_quality: str = "high") -> None:
     """
     Shuffle the arrangement of pixels on two dimensions.
     """
+    scale_of_image_quality = {
+        "low": 30,
+        "medium": 75,
+        "high": 95
+    }
+
     rng = np.random.default_rng(seed)
 
     pixel_array = np.array(
@@ -58,16 +65,35 @@ def shuffle_pixels(origin_image: str,
     shuffled_output = Image.fromarray(
         pixel_array[indices_shuffled_x[:, np.newaxis], indices_shuffled_y, :]
     )
-    shuffled_output.save(shuffled_image)
+
+    try:
+        shuffled_output.save(
+            shuffled_image,
+            quality=scale_of_image_quality[image_quality],
+            optimize=True,
+            progressive=True,
+            compress_level=9
+        )
+    except KeyError:
+        print(
+            f"Invalid selection of image quality {image_quality}. "
+        )
 
 
 def recover_pixels(shuffled_image: str,
                    recovered_image: str,
                    seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz")) -> None:
+                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz"),
+                   image_quality: str = "high") -> None:
     """
     Recover the arrangement of pixels on two dimensions.
     """
+    scale_of_image_quality = {
+        "low": 30,
+        "medium": 75,
+        "high": 95
+    }
+
     pixel_array = np.array(
         Image.open(shuffled_image)
     )
@@ -87,11 +113,25 @@ def recover_pixels(shuffled_image: str,
     recovered_output = Image.fromarray(
         pixel_array[indices_recovered_x[:, np.newaxis], indices_recovered_y, :]
     )
-    recovered_output.save(recovered_image)
+
+    try:
+        recovered_output.save(
+            recovered_image,
+            quality=scale_of_image_quality[image_quality],
+            optimize=True,
+            progressive=True,
+            compress_level=9
+        )
+    except KeyError:
+        print(
+            f"Invalid selection of image quality {image_quality}. "
+        )
 
 
-if __name__ == "__main__":
-
+def main() -> None:
+    """
+    The main function.
+    """
     print(
         "A script to encode/decode images "
         "or shuffle/recover the pixels of images.\n"
@@ -135,6 +175,10 @@ if __name__ == "__main__":
             path_of_shuffled_image = input(
                 "Please input the path of the shuffled image.\n"
             )
+            level_of_image_quality = input(
+                'Please select the level of image quality.\n'
+                'Options are "low", "medium" and "high".\n'
+            )
             while True:
                 random_number_seed = input(
                     'Please input the selected random number seed.\n'
@@ -148,7 +192,8 @@ if __name__ == "__main__":
                         path_of_original_image,
                         path_of_shuffled_image,
                         None,
-                        path_of_output_arrays
+                        path_of_output_arrays,
+                        level_of_image_quality
                     )
                     break
                 try:
@@ -157,7 +202,8 @@ if __name__ == "__main__":
                         path_of_original_image,
                         path_of_shuffled_image,
                         int(random_number_seed),
-                        None
+                        None,
+                        level_of_image_quality
                     )
                     break
                 except ValueError:
@@ -173,6 +219,10 @@ if __name__ == "__main__":
             path_of_recovered_image = input(
                 "Please input the path of the recovered image.\n"
             )
+            level_of_image_quality = input(
+                'Please select the level of image quality.\n'
+                'Options are "low", "medium" and "high".\n'
+            )
             while True:
                 random_number_seed = input(
                     'Please input the selected random number seed.\n'
@@ -186,7 +236,8 @@ if __name__ == "__main__":
                         path_of_shuffled_image,
                         path_of_recovered_image,
                         None,
-                        path_of_input_arrays
+                        path_of_input_arrays,
+                        level_of_image_quality
                     )
                     break
                 try:
@@ -195,7 +246,8 @@ if __name__ == "__main__":
                         path_of_shuffled_image,
                         path_of_recovered_image,
                         int(random_number_seed),
-                        None
+                        None,
+                        level_of_image_quality
                     )
                     break
                 except ValueError:
@@ -216,3 +268,8 @@ if __name__ == "__main__":
             "/bin/bash -c 'read -s -n 1 -p \"Press any key to exit.\"'"
         )
         print()
+
+
+if __name__ == "__main__":
+
+    main()
