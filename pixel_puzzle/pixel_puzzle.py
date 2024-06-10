@@ -76,7 +76,7 @@ def shuffle_pixels(origin_image: str,
         )
     except KeyError:
         print(
-            f"Invalid selection of image quality {image_quality}. "
+            f'Invalid selection of image quality: "{image_quality}". '
         )
 
 
@@ -124,7 +124,7 @@ def recover_pixels(shuffled_image: str,
         )
     except KeyError:
         print(
-            f"Invalid selection of image quality {image_quality}. "
+            f'Invalid selection of image quality: "{image_quality}". '
         )
 
 
