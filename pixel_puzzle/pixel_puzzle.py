@@ -65,19 +65,13 @@ def shuffle_pixels(origin_image: str,
     shuffled_output = Image.fromarray(
         pixel_array[indices_shuffled_x[:, np.newaxis], indices_shuffled_y, :]
     )
-
-    try:
-        shuffled_output.save(
-            shuffled_image,
-            quality=scale_of_image_quality[image_quality],
-            optimize=True,
-            progressive=True,
-            compress_level=9
-        )
-    except KeyError:
-        print(
-            f'Invalid selection of image quality: "{image_quality}". '
-        )
+    shuffled_output.save(
+        shuffled_image,
+        quality=scale_of_image_quality[image_quality],
+        optimize=True,
+        progressive=True,
+        compress_level=9
+    )
 
 
 def recover_pixels(shuffled_image: str,
@@ -113,19 +107,13 @@ def recover_pixels(shuffled_image: str,
     recovered_output = Image.fromarray(
         pixel_array[indices_recovered_x[:, np.newaxis], indices_recovered_y, :]
     )
-
-    try:
-        recovered_output.save(
-            recovered_image,
-            quality=scale_of_image_quality[image_quality],
-            optimize=True,
-            progressive=True,
-            compress_level=9
-        )
-    except KeyError:
-        print(
-            f'Invalid selection of image quality: "{image_quality}". '
-        )
+    recovered_output.save(
+        recovered_image,
+        quality=scale_of_image_quality[image_quality],
+        optimize=True,
+        progressive=True,
+        compress_level=9
+    )
 
 
 def main() -> None:
@@ -175,10 +163,6 @@ def main() -> None:
             path_of_shuffled_image = input(
                 "Please input the path of the shuffled image.\n"
             )
-            level_of_image_quality = input(
-                'Please select the level of image quality.\n'
-                'Options are "low", "medium" and "high".\n'
-            )
             while True:
                 random_number_seed = input(
                     'Please input the selected random number seed.\n'
@@ -188,29 +172,34 @@ def main() -> None:
                     path_of_output_arrays = input(
                         "Please input the path of the output arrays.\n"
                     )
-                    shuffle_pixels(
-                        path_of_original_image,
-                        path_of_shuffled_image,
-                        None,
-                        path_of_output_arrays,
-                        level_of_image_quality
-                    )
                     break
                 try:
                     int(random_number_seed)
-                    shuffle_pixels(
-                        path_of_original_image,
-                        path_of_shuffled_image,
-                        int(random_number_seed),
-                        None,
-                        level_of_image_quality
-                    )
                     break
                 except ValueError:
                     print(
                         "Invalid input. Please try again. "
                         "Please input a non-negative integer. "
                     )
+            while True:
+                level_of_image_quality = input(
+                    'Please select the level of image quality.\n'
+                    'Options are "low", "medium" and "high".\n'
+                )
+                if level_of_image_quality in ["low", "medium", "high"]:
+                    break
+                else:
+                    print(
+                        'Invalid input. Please try again. '
+                        'Options are "low", "medium" and "high". '
+                    )
+            shuffle_pixels(
+                path_of_original_image,
+                path_of_shuffled_image,
+                None if random_number_seed == "no" else int(random_number_seed),
+                None if random_number_seed != "no" else path_of_output_arrays,
+                level_of_image_quality
+            )
 
         case "recover":
             path_of_shuffled_image = input(
@@ -218,10 +207,6 @@ def main() -> None:
             )
             path_of_recovered_image = input(
                 "Please input the path of the recovered image.\n"
-            )
-            level_of_image_quality = input(
-                'Please select the level of image quality.\n'
-                'Options are "low", "medium" and "high".\n'
             )
             while True:
                 random_number_seed = input(
@@ -232,29 +217,34 @@ def main() -> None:
                     path_of_input_arrays = input(
                         "Please input the path of the input arrays.\n"
                     )
-                    recover_pixels(
-                        path_of_shuffled_image,
-                        path_of_recovered_image,
-                        None,
-                        path_of_input_arrays,
-                        level_of_image_quality
-                    )
                     break
                 try:
                     int(random_number_seed)
-                    recover_pixels(
-                        path_of_shuffled_image,
-                        path_of_recovered_image,
-                        int(random_number_seed),
-                        None,
-                        level_of_image_quality
-                    )
                     break
                 except ValueError:
                     print(
                         "Invalid input. Please try again. "
                         "Please input a non-negative integer. "
                     )
+            while True:
+                level_of_image_quality = input(
+                    'Please select the level of image quality.\n'
+                    'Options are "low", "medium" and "high".\n'
+                )
+                if level_of_image_quality in ["low", "medium", "high"]:
+                    break
+                else:
+                    print(
+                        'Invalid input. Please try again. '
+                        'Options are "low", "medium" and "high". '
+                    )
+            recover_pixels(
+                path_of_shuffled_image,
+                path_of_recovered_image,
+                None if random_number_seed == "no" else int(random_number_seed),
+                None if random_number_seed != "no" else path_of_input_arrays,
+                level_of_image_quality
+            )
 
         case _:
             print(
