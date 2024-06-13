@@ -127,7 +127,7 @@ def main() -> None:
 
     selection_of_mode = input(
         'Please select one mode.\n'
-        'Options are "encode", "decode", "shuffle" and "recover".\n'
+        'Options are "encode", "decode", "shuffle" or "recover".\n'
     )
 
     match selection_of_mode:
@@ -184,14 +184,14 @@ def main() -> None:
             while True:
                 level_of_image_quality = input(
                     'Please select the level of image quality.\n'
-                    'Options are "low", "medium" and "high".\n'
+                    'Options are "low", "medium" or "high".\n'
                 )
                 if level_of_image_quality in ["low", "medium", "high"]:
                     break
                 else:
                     print(
                         'Invalid input. Please try again. '
-                        'Options are "low", "medium" and "high". '
+                        'Options are "low", "medium" or "high". '
                     )
             shuffle_pixels(
                 path_of_original_image,
@@ -229,14 +229,14 @@ def main() -> None:
             while True:
                 level_of_image_quality = input(
                     'Please select the level of image quality.\n'
-                    'Options are "low", "medium" and "high".\n'
+                    'Options are "low", "medium" or "high".\n'
                 )
                 if level_of_image_quality in ["low", "medium", "high"]:
                     break
                 else:
                     print(
                         'Invalid input. Please try again. '
-                        'Options are "low", "medium" and "high". '
+                        'Options are "low", "medium" or "high". '
                     )
             recover_pixels(
                 path_of_shuffled_image,
