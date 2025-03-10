@@ -62,9 +62,6 @@ The binaries are created with
 [Nuitka](https://github.com/Nuitka/Nuitka):
 
 ```bash
-# Show Nuitka version
-python -m nuitka --version
-
 # Package it on Linux
 python -m nuitka --onefile --remove-output pixel_puzzle.py
 
@@ -76,6 +73,7 @@ python -m nuitka --onefile --remove-output --windows-icon-from-ico="python.ico" 
 
 Deploy web applications using:
 
+- [Vercel](https://github.com/vercel/vercel)
 - [Gradio](https://github.com/gradio-app/gradio)
 - [Streamlit](https://github.com/streamlit/streamlit)
 
@@ -89,10 +87,6 @@ Here are some links to other similar projects that I am aware of:
 - [RicEncrypt](https://github.com/NaviHX/ricencrypt)
 
 ## Copyrights
-
-> [!WARNING]
-> Contents of this repository may cause some copyright issues.
-> Please raise issues to let me know if that happens.
 
 PixelPuzzle is a free, open-source software package
 (distributed under the [GPLv3 license](./LICENSE)).
