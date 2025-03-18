@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+"""
+Encode/decode images using Base64
+or shuffle/recover the pixels of images.
+"""
 
 import os
 import platform
 from base64 import b64decode, b64encode
 from pathlib import Path
-from typing import Union
 
 import numpy as np
 from PIL import Image
 
 
 def encode_base64(image_to_encode: str,
-                  encoded_text: Union[str, Path] = Path(__file__).with_suffix(".txt")) -> None:
+                  encoded_text: str | Path = Path(__file__).with_suffix(".txt")) -> None:
     """
     Encode the input image as a Base64 string.
     """
@@ -23,7 +26,7 @@ def encode_base64(image_to_encode: str,
 
 
 def decode_base64(encoded_text: str,
-                  decoded_image: Union[str, Path] = Path(__file__).with_suffix(".png")) -> None:
+                  decoded_image: str | Path = Path(__file__).with_suffix(".png")) -> None:
     """
     Decode the input Base64 string into an image.
     """
@@ -35,8 +38,8 @@ def decode_base64(encoded_text: str,
 
 def shuffle_pixels(origin_image: str,
                    shuffled_image: str,
-                   seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz"),
+                   seed: int | None = None,
+                   index_file: str | Path | None = Path(__file__).with_suffix(".npz"),
                    image_quality: str = "high") -> None:
     """
     Shuffle the arrangement of pixels on two dimensions.
@@ -76,8 +79,8 @@ def shuffle_pixels(origin_image: str,
 
 def recover_pixels(shuffled_image: str,
                    recovered_image: str,
-                   seed: Union[int, None] = None,
-                   index_file: Union[str, Path, None] = Path(__file__).with_suffix(".npz"),
+                   seed: int | None = None,
+                   index_file: str | Path | None = Path(__file__).with_suffix(".npz"),
                    image_quality: str = "high") -> None:
     """
     Recover the arrangement of pixels on two dimensions.
