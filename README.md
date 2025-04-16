@@ -69,13 +69,10 @@ python -m nuitka --onefile --remove-output pixel_puzzle.py
 python -m nuitka --onefile --remove-output --windows-icon-from-ico="python.ico" pixel_puzzle.py
 ```
 
-## TODO
+## Web Applications
 
-Deploy web applications using:
-
-- [Vercel](https://github.com/vercel/vercel)
-- [Gradio](https://github.com/gradio-app/gradio)
-- [Streamlit](https://github.com/streamlit/streamlit)
+Deploy [Pixel Puzzle](https://pixelpuzzle-web.vercel.app/)
+on [Vercel](https://github.com/vercel/vercel).
 
 ## Similar Projects
 
