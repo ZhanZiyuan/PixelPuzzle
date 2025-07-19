@@ -3,12 +3,14 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "PixelPuzzle"
+name = "pixelpuzzle"
 description = "Encode/decode images using Base64 or shuffle/recover the pixels of images."
 requires-python = ">=3.10"
 license = { text = "GNU GPLv3" }
-authors = [{ name = "ZhanZiyuan", email = "ziyuanzhan@mail.nankai.edu.cn" }]
-maintainers = [{ name = "ZhanZiyuan", email = "ziyuanzhan@mail.nankai.edu.cn" }]
+authors = [{ name = "Zhan Ziyuan", email = "ziyuanzhan@mail.nankai.edu.cn" }]
+maintainers = [
+    { name = "Zhan Ziyuan", email = "ziyuanzhan@mail.nankai.edu.cn" },
+]
 classifiers = [
     "Environment :: Console",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
