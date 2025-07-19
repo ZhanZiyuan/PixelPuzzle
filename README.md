@@ -44,30 +44,21 @@ in Python.
 
 - The original image:
 
-    ![The original image](./assets/original.png "original")
+    ![The original image](./images/original.png "original")
 
-- The shuffled image:
+- The shuffled image (using the random seed `0721`):
 
-    ![The shuffled image](./assets/shuffled.png "shuffled")
-
-    The `.npz` file [key.npz](./assets/key.npz) stores the original positions of pixels.
+    ![The shuffled image](./images/shuffled.png "shuffled")
 
 - The recovered image:
 
-    ![The recovered image](./assets/recovered.png "recovered")
+    ![The recovered image](./images/recovered.png "recovered")
 
 ## Packaging
 
 The binaries are created with
-[Nuitka](https://github.com/Nuitka/Nuitka):
-
-```bash
-# Package it on Linux
-python -m nuitka --onefile --remove-output pixel_puzzle.py
-
-# Package it on Windows
-python -m nuitka --onefile --remove-output --windows-icon-from-ico="python.ico" pixel_puzzle.py
-```
+~~[Nuitka](https://github.com/Nuitka/Nuitka)~~
+[PyInstaller](https://github.com/pyinstaller/pyinstaller).
 
 ## Web Applications
 
@@ -87,14 +78,5 @@ Here are some links to other similar projects that I am aware of:
 
 PixelPuzzle is a free, open-source software package
 (distributed under the [GPLv3 license](./LICENSE)).
-Some of the references are as follows:
-
-- [CPython](https://github.com/python/cpython)
-- [Nuitka](https://github.com/Nuitka/Nuitka)
-- [Doki Doki Literature Club (DDLC)](https://ddlc.moe/)
-- [图片混淆](https://www.coolapk.com/feed/27933328?shareKey=N2QxMWY3MTExMDc0NjY0OWQwYWE)
-
-[The Python Software Foundation](https://www.python.org/psf-landing/)
-owns the copyright of [Python icon](./assets/python.ico).
 The sample image used is downloaded from
 [satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
