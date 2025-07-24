@@ -1,11 +1,11 @@
 # PixelPuzzle
 
-![GitHub Actions Workflow Status](https://github.com/ZhanZiyuan/PixelPuzzle/actions/workflows/python-publish.yml/badge.svg)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pixelpuzzle)
-![PyPI - Version](https://img.shields.io/pypi/v/pixelpuzzle)
-![PyPI - Wheel](https://img.shields.io/pypi/wheel/pixelpuzzle)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/pixelpuzzle)
-![GitHub License](https://img.shields.io/github/license/ZhanZiyuan/PixelPuzzle)
+[![GitHub Actions Workflow Status](https://github.com/ZhanZiyuan/PixelPuzzle/actions/workflows/python-publish.yml/badge.svg)](https://github.com/ZhanZiyuan/PixelPuzzle/blob/main/.github/workflows/python-publish.yml)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/)
+[![PyPI - Version](https://img.shields.io/pypi/v/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/#files)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/#files)
+[![GitHub License](https://img.shields.io/github/license/ZhanZiyuan/PixelPuzzle)](https://github.com/ZhanZiyuan/PixelPuzzle/blob/main/LICENSE)
 
 Encode/decode images using Base64
 or shuffle/recover the pixels of images.
