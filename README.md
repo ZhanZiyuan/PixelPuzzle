@@ -112,3 +112,5 @@ PixelPuzzle is a free, open-source software package
 (distributed under the [GPLv3 license](./LICENSE)).
 The sample image used is downloaded from
 [satchely doki doki literature club! natsuki](https://yande.re/post/show/465068).
+The Python icon is downloaded from
+[python.ico](https://github.com/python/cpython/blob/main/PC/icons/python.ico).
