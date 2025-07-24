@@ -1,5 +1,12 @@
 # PixelPuzzle
 
+![GitHub Actions Workflow Status](https://github.com/ZhanZiyuan/PixelPuzzle/actions/workflows/python-publish.yml/badge.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pixelpuzzle)
+![PyPI - Version](https://img.shields.io/pypi/v/pixelpuzzle)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/pixelpuzzle)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pixelpuzzle)
+![GitHub License](https://img.shields.io/github/license/ZhanZiyuan/PixelPuzzle)
+
 Encode/decode images using Base64
 or shuffle/recover the pixels of images.
 
@@ -40,6 +47,23 @@ of similar functions of the Android application
 [图片混淆](https://www.coolapk.com/feed/27933328?shareKey=N2QxMWY3MTExMDc0NjY0OWQwYWE)
 in Python.
 
+## Installation
+
+PixelPuzzle can be installed
+from [PyPI](https://pypi.org/project/pixelpuzzle/):
+
+```bash
+pip install pixelpuzzle
+```
+
+or download the repository and run:
+
+```bash
+pip install .
+```
+
+as of the repository root folder.
+
 ## Examples
 
 - The original image:
@@ -58,7 +82,15 @@ in Python.
 
 The binaries are created with
 ~~[Nuitka](https://github.com/Nuitka/Nuitka)~~
-[PyInstaller](https://github.com/pyinstaller/pyinstaller).
+[PyInstaller](https://github.com/pyinstaller/pyinstaller):
+
+```bash
+# Package it on Linux
+pyinstaller --name PixelPuzzle --onefile -p pixelpuzzle pixelpuzzle/__main__.py
+
+# Package it on Windows
+pyinstaller --name PixelPuzzle --onefile --icon python.ico -p pixelpuzzle pixelpuzzle/__main__.py
+```
 
 ## Web Applications
 
