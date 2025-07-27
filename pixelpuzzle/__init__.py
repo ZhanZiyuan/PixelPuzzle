@@ -10,7 +10,7 @@ import platform
 
 from .core import decode_base64, encode_base64, recover_pixels, shuffle_pixels
 
-__version__ = "0.4.3"
+__version__ = "0.4.4"
 
 
 def main() -> None:

@@ -1,3 +1,8 @@
+<p align="center">
+    <img alt="logo" src="https://github.com/ZhanZiyuan/PixelPuzzle/raw/main/assets/logo.svg"
+        width="138" />
+</p>
+
 # PixelPuzzle
 
 [![GitHub Actions Workflow Status](https://github.com/ZhanZiyuan/PixelPuzzle/actions/workflows/python-publish.yml/badge.svg)](https://github.com/ZhanZiyuan/PixelPuzzle/blob/main/.github/workflows/python-publish.yml)
@@ -68,15 +73,15 @@ as of the repository root folder.
 
 - The original image:
 
-    ![The original image](./images/original.png "original")
+    ![The original image](https://github.com/ZhanZiyuan/PixelPuzzle/raw/main/examples/original.png "original")
 
 - The shuffled image (using the random seed `0721`):
 
-    ![The shuffled image](./images/shuffled.png "shuffled")
+    ![The shuffled image](https://github.com/ZhanZiyuan/PixelPuzzle/raw/main/examples/shuffled.png "shuffled")
 
 - The recovered image:
 
-    ![The recovered image](./images/recovered.png "recovered")
+    ![The recovered image](https://github.com/ZhanZiyuan/PixelPuzzle/raw/main/examples/recovered.png "recovered")
 
 ## Packaging
 
