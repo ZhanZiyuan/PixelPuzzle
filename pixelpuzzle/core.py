@@ -75,7 +75,9 @@ def shuffle_pixels(origin_image: str | Path,
         quality=scale_of_image_quality[image_quality],
         optimize=True,
         progressive=True,
-        compress_level=9
+        compress_level=9,
+        format="WEBP",
+        lossless=True
     )
 
 
@@ -116,7 +118,9 @@ def recover_pixels(shuffled_image: str | Path,
         quality=scale_of_image_quality[image_quality],
         optimize=True,
         progressive=True,
-        compress_level=9
+        compress_level=9,
+        format="WEBP",
+        lossless=True
     )
 
 
