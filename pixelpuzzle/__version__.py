@@ -5,4 +5,4 @@ Encode/decode images using Base64
 or shuffle/recover the pixels of images.
 """
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
