@@ -8,6 +8,7 @@ or shuffle/recover the pixels of images.
 import os
 import platform
 
+from .__version__ import __version__
 from .core import decode_base64, encode_base64, recover_pixels, shuffle_pixels
 
 
