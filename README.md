@@ -10,7 +10,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/)
 [![PyPI - Version](https://img.shields.io/pypi/v/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/)
 [![PyPI - Wheel](https://img.shields.io/pypi/wheel/pixelpuzzle)](https://pypi.org/project/pixelpuzzle/#files)
-[![PyPI Downloads](https://static.pepy.tech/badge/pixelpuzzle/month)](https://pepy.tech/projects/pixelpuzzle)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pixelpuzzle)](https://pypistats.org/packages/pixelpuzzle)
 [![GitHub License](https://img.shields.io/github/license/ZhanZiyuan/PixelPuzzle)](https://github.com/ZhanZiyuan/PixelPuzzle/blob/main/LICENSE)
 
 Encode/decode images using Base64
